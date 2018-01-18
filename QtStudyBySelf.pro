@@ -13,7 +13,8 @@ TEMPLATE = app
 
 
 SOURCES += main.cpp\
-        widget.cpp
+        widget.cpp \
+    segyfile.cpp
 
 HEADERS  += widget.h \
     getallfiles.h \

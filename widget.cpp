@@ -1,6 +1,7 @@
 #include "widget.h"
 #include "ui_widget.h"
 #include "getallfiles.h"
+#include "segyfile.h"
 
 Widget::Widget(QWidget *parent) :
     QWidget(parent),
@@ -36,9 +37,15 @@ void Widget::on_convertButton_clicked()
         return;
     }
     QFileInfoList fileInfoList= GetFileListInSegy(GetFileList(openFileName));//获得文件夹中所有后缀名为sgy文件的文件路径，其中GetFileList(openFileName)是获得所有文件的文件名。
-
+    QList<CSegyHead> segyList;
     for(int i=0;i<fileInfoList.size();i++){//遍历fileInfoList
         QFileInfo fileInfo= fileInfoList.at(i);
+        CSegyHead segyHead(fileInfo.filePath());
+        qDebug()<<segyHead.getDataTime();
+        segyList<<segyHead;
         qDebug()<<fileInfo.filePath();
+    }
+    for(int i=0;i<segyList.size();i++){
+
     }
 }

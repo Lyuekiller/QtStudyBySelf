@@ -2,7 +2,7 @@
 #define SEGYFILE
 
 #endif // SEGYFILE
-
+#include <QFileInfo>
 using namespace std;
 
  class CSegyHead{
@@ -21,6 +21,7 @@ using namespace std;
      short minute;//道头163-164,分
      short sec;//道头165-166,秒
  public:
+     CSegyHead(QString path);
      char *getReel();//获得卷头
      char *getSu();//获得道头
      void reviseReel(int start , int length , QString targetPath);//修改卷头的指定位置
